@@ -1,0 +1,11 @@
+{
+  "name": "rooms-quickly",
+  "version": "1.0.0",
+  "description": "Rooms bidding system on hotel auction.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdullah All Mehedi",
+  "license": "ISC"
+}
