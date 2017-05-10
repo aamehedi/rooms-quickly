@@ -2,10 +2,25 @@
   "name": "rooms-quickly",
   "version": "1.0.0",
   "description": "Rooms bidding system on hotel auction.",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Abdullah All Mehedi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bench-rest": "^1.2.4",
+    "body-parser": "^1.17.1",
+    "cote": "^0.13.2",
+    "express": "^4.15.2",
+    "helmet": "^3.6.0",
+    "mocha": "^3.3.0",
+    "mongodb": "^2.2.26",
+    "sinon": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
+    "pretty-hrtime": "^1.0.3"
+  }
 }
