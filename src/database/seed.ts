@@ -1,11 +1,13 @@
-import { Room } from './services/room/model';
-import { Partner } from './services/partner/model';
+import { Room } from '../services/room/model';
+import { Partner } from '../services/partner/model';
 import * as mongoose from 'mongoose';
 import * as config from 'config';
-import { logger } from './logger';
-(mongoose as any).Promise = global.Promise;
+import { logger } from '../util/logger';
+import { db } from './db';
 
-Room.remove({}).exec()
+db.then(() => {
+    Room.remove({}).exec()
+  })
   .then(() => {
     logger.debug("Existing rooms have been removed from the database.");
     return Room.schema.statics.seed(config.get('seed.number_of_rooms'));
@@ -26,6 +28,8 @@ Room.remove({}).exec()
     partners.forEach(partner => {
       logger.info(JSON.stringify(partner, null, '\t'));
     });
+    process.exit(0);
   }).catch((err) => {
-    return this.done(logger.error(err.stack));
+    logger.error(err);
+    process.exit(0);
   });
