@@ -3,13 +3,11 @@ import * as bodyParser from 'body-parser';
 import * as i18n from 'i18n';
 import * as config from 'config';
 import * as mongoose from 'mongoose';
-import { logger, expressLogger } from './logger'
+import { db } from './database/db';
+import { logger, expressLogger } from './util/logger';
 import { router } from './router';
 
-(mongoose as any).Promise = global.Promise;
-
 const server = express();
-const database : string = config.get('database') as string;
 const port = config.get('port');
 
 // Attaching Express Winston Logger
@@ -25,9 +23,7 @@ server.use(i18n.init);
 
 router(server);
 
-mongoose.connect(database)
-  .then(() => {
-    logger.debug('MongoDB have been connected.');
+db.then(() => {
     return server.listen(port);
   }).then(() => {
     logger.debug('Server is running at ' + port + ' ...')
@@ -35,4 +31,9 @@ mongoose.connect(database)
     return this.done(logger.error(err.stack));
   });
 
-export {server};
+process.on('SIGINT', () => {
+  mongoose.connection.close(() => {
+    logger.debug('Mongoose default connection disconnected through app termination.');
+    process.exit(0); 
+  }); 
+});

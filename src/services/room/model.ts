@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import * as faker from 'faker';
-import { logger } from '../../logger';
+
 /**
  * Hotel Schema
  */
@@ -118,7 +118,6 @@ RoomSchema.statics = {
   seed: (numberOfRooms : number = 10) : Promise<mongoose.Document[]> => {
     const rooms = [];
     for (let i = 0; i < numberOfRooms; i++) {
-      logger.debug(i.toString());
       rooms.push(RoomSchema.statics.createFakeInstance());
     }
     return Room.create(rooms);
