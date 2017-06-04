@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import * as faker from 'faker';
+(mongoose as any).Promise = global.Promise;
 
 /**
  * Partner Schema

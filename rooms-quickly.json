@@ -1,0 +1,19 @@
+{
+    "apps": [
+        {
+            "name"      : "server",
+            "script"    : "dist/src/server.js",
+            "watch"     : "dist/src/server.js"
+        },
+        {
+            "name"      : "monitor",
+            "script"    : "dist/src/util/monitor.js",
+            "watch"     : "dist/src/util/monitor.js"
+        },
+        {
+            "name"      : "room-service",
+            "script"    : "dist/src/services/room/service.js",
+            "watch"     : "dist/src/services/room/service.js"
+        }
+    ]
+}

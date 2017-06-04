@@ -1,5 +1,10 @@
 import * as mongoose from 'mongoose';
 import * as faker from 'faker';
+import { logger, configuration } from '../../util/logger'
+import { db } from '../../database/db';
+
+logger.configure(configuration(`${__dirname}/../../../../logs/room/`));
+(mongoose as any).Promise = global.Promise;
 
 /**
  * Hotel Schema
@@ -76,15 +81,16 @@ const RoomSchema = new mongoose.Schema({
   }
 });
 /**
- * Statics
+ * Statics mongoose
  */
 RoomSchema.statics = {
   list: (skip: number = 0, limit: number = 20) : Promise<mongoose.Document[]> => {
-    return Room.find({endTime: {$gt: new Date()}})
+    return db.then(() => {
+      return Room.find({endTime: {$gt: new Date()}})
       .sort({endTime: -1})
       .skip(skip)
-      .limit(limit)
-      .exec();
+      .limit(limit);
+    });
   },
   createFakeInstance: () : mongoose.Document => {
     const specialities = [];
