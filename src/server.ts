@@ -23,12 +23,13 @@ server.use(i18n.init);
 
 router(server);
 
-db.then(() => {
+db
+  .then(() => {
     return server.listen(port);
   }).then(() => {
-    logger.debug('Server is running at ' + port + ' ...')
+    logger.debug(`Server is running at ${port} ...`);
   }).catch((err) => {
-    return this.done(logger.error(err.stack));
+    logger.error(err);
   });
 
 process.on('SIGINT', () => {

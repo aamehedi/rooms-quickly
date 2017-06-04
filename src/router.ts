@@ -12,14 +12,12 @@ const router = (server : express.Express) => {
     res.send('Hi');
   })
 
-  server.get('/rooms', (_req: express.Request, res: express.Response) => {
-    roomRequester.send({type: 'list'}, (err: Error, rooms: Array<any>) => {
-      if (err) {
-        logger.error(JSON.stringify(err, null, '\t'));
-      } else {
+  server.get('/rooms', (req: express.Request, res: express.Response) => {
+    roomRequester.send({type: 'list', skip: req.query.skip, limit: req.query.limit})
+      .then((rooms: any) => {
         res.send(rooms);
-      }
-    });
+      })
+      .catch((err: Error) => {logger.error(JSON.stringify(err, null, '\t'))});
   });
 
   const roomRequester = new cote.Requester({
