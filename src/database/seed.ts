@@ -3,11 +3,8 @@ import { Partner } from '../services/partner/model';
 import * as mongoose from 'mongoose';
 import * as config from 'config';
 import { logger } from '../util/logger';
-import { db } from './db';
 
-db.then(() => {
-    Room.remove({}).exec()
-  })
+Room.remove({}).exec()
   .then(() => {
     logger.debug("Existing rooms have been removed from the database.");
     return Room.schema.statics.seed(config.get('seed.number_of_rooms'));

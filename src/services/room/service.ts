@@ -10,3 +10,7 @@ const roomResponder = new cote.Responder({
 roomResponder.on('list', (req: any) => {
   return Room.schema.statics.list(req.skip, req.limit);
 });
+
+roomResponder.on('post_bid', (req: any) => {
+  return Room.schema.statics.postBid(req.roomId, req.bid.partnerId, req.bid.amount);
+});

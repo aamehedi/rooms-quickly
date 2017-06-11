@@ -1,3 +1,5 @@
 module.exports = {
-  port: "PORT"
+  port: "PORT",
+  database: "DATABASE_URL",
+  redisURL: "REDIS_URL"
 };

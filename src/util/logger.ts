@@ -1,8 +1,6 @@
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 
-
-
 const configuration = (path : string = '') => {
   path = path || `${__dirname}/../../../logs/`;
   const infoPath = `${path}info.log`;

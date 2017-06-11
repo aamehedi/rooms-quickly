@@ -1,7 +1,9 @@
 import * as mongoose from 'mongoose';
 import * as faker from 'faker';
-(mongoose as any).Promise = global.Promise;
+import { connection } from '../../database/db';
+import * as http from "http";
 
+(mongoose as any).Promise = global.Promise;
 /**
  * Partner Schema
  */
@@ -18,31 +20,32 @@ const PartnerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  httpOptions: {
-    method: {
-      type: String,
-      required: true
-    },
-    endpoint: {
-      type: String,
-      required: true
-    }
+  httpEndpoint: {
+    type: String,
+    required: true
   }
 });
-const methods : String[] = ["get", "post", "put", "patch"];
+
 /**
  * Statics
  */
 PartnerSchema.statics = {
+  notify: (parntnerId: string, bidId: string) : Promise<any> => {
+    return Partner.findById(parntnerId)
+      .then((partner: any) => {
+        return new Promise((resolve: any, reject: any) => {
+          http.request(`${partner.httpEndpoint}?bidId=${bidId}`, function (response: any) {
+            resolve(response);
+          }).on("error", (error: Error) => {reject(error);}).end();
+        });
+      });
+  },
   createFakeInstance: () : mongoose.Document => {
     const partner = new Partner({
       name: faker.name.firstName(),
       token: faker.random.alphaNumeric(32),
       email: faker.internet.email(),
-      httpOptions: {
-        method: faker.random.arrayElement(methods),
-        endpoint: faker.internet.url()
-      }
+      httpEndpoint: faker.internet.url()
     });
     return partner;
   },
@@ -55,5 +58,5 @@ PartnerSchema.statics = {
   }
 };
 
-const Partner = mongoose.model('Partner', PartnerSchema);
+const Partner = connection.model('Partner', PartnerSchema);
 export {Partner};

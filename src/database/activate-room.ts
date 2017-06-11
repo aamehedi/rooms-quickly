@@ -1,5 +1,4 @@
 import { logger } from '../util/logger';
-import { Room } from'../services/room/model';
 import mongoose from 'mongoose';
 
 const argv = process.argv.slice(2);
@@ -10,12 +9,11 @@ if (!objectId) {
   process.exit(0);
 }
 
-import { db } from './db';
-db.then(() => {
-    let tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    return Room.findByIdAndUpdate(objectId, {$set: {endTime: tomorrow}}).exec();
-  })
+import { Room } from'../services/room/model';
+
+let tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1)
+Room.findByIdAndUpdate(objectId, {$set: {endTime: tomorrow}}).exec()
   .then((room : mongoose.Document) => {
     logger.debug(JSON.stringify(room, null, '\t'));
     process.exit(0);
@@ -24,4 +22,3 @@ db.then(() => {
     logger.error(err);
     process.exit(0);
   });
-
