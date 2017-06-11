@@ -1,10 +1,27 @@
 import * as mongoose from 'mongoose';
 import * as faker from 'faker';
-import { logger, configuration } from '../../util/logger'
-import { db } from '../../database/db';
+import { connection } from '../../database/db';
+import { notify } from '../../util/queue';
 
-logger.configure(configuration(`${__dirname}/../../../../logs/room/`));
 (mongoose as any).Promise = global.Promise;
+
+/**
+ * Bid Schema
+ */
+const BidSchema = new mongoose.Schema({
+  partnerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Partner",
+    required: true
+  },
+  amount: {
+    type: Number,
+    required: true,
+    validate: [
+    ]
+  }
+});
+const Bid = mongoose.model('Bid', BidSchema);
 
 /**
  * Hotel Schema
@@ -50,6 +67,7 @@ const HotelSchema = new mongoose.Schema({
     type: String
   }
 });
+
 /**
  * Room Schema
  */
@@ -74,23 +92,105 @@ const RoomSchema = new mongoose.Schema({
     required: true,
     default: 0
   },
+  minimalBid: {
+    type: Number,
+    required: true
+  },
   specialities: [String],
   hotel: {
     type: HotelSchema,
     required: true
+  },
+  winnerBid: {
+    type: BidSchema,
+    required: false,
+    validate: [
+      {
+        validator: (data: any) => {
+          return !!data.$parent._doc.endTime;
+        },
+        message: "The Room is not opened yet for bidding.",
+
+      },
+      {
+        validator: (data: any) => {
+          return new Date(data.$parent._doc.endTime) > new Date();
+        },
+        message: "The Room is closed now. Cannot take any more bids."
+      },
+      {
+        validator: (data: any) => {
+          return data._doc.amount >= data.$parent._doc.minimalBid;
+        },
+        message: "The bid amount is not greater than or equal to minimal allowed bid."
+      },
+      {
+        validator: (data: any) => {
+          return data._doc.amount >= data.$parent.oldWinnerBid._doc.amount * 1.05;
+        },
+        message: "The bid amount is not greater than old one by 5%.",
+      }
+    ]
+  },
+  activeBids: {
+    type: [BidSchema],
+    required: false
   }
 });
+
+/**
+ * Hooks
+ */
+RoomSchema.post("init", (room: any) => {
+  room.oldWinnerBid = room.winnerBid;
+});
+
 /**
  * Statics mongoose
  */
 RoomSchema.statics = {
   list: (skip: number = 0, limit: number = 20) : Promise<mongoose.Document[]> => {
-    return db.then(() => {
       return Room.find({endTime: {$gt: new Date()}})
       .sort({endTime: -1})
       .skip(skip)
-      .limit(limit);
-    });
+      .limit(limit)
+      .exec();
+  },
+  postBid: (roomId: string, partnerId: string, amount: number) => {
+    return Room.findById(roomId)
+      .then((room: any) => {
+        return new Promise((resolve: any, reject: any) => {
+          if (!room) {
+            reject(new Error("RoomNotFound"));
+          }
+          resolve(room);
+        });
+      }).then((room: any) => {
+        return new Promise((resolve: any, reject: any) => {
+          const bid = new Bid({partnerId: partnerId, amount: amount});
+          room.winnerBid = bid;
+          room.activeBids.unshift(bid);
+          room.save()
+            .then((room: any) => {
+              return room.update({
+                $pull: {activeBids: {
+                  _id: {$ne: bid._id},
+                  partnerId: mongoose.Types.ObjectId.createFromHexString(partnerId),
+                }}
+              })
+            })
+            .then(() => {
+              // Notify the looser partner
+              if (room.winnerBid) {
+                notify(room.winnerBid.partnerId, room.winnerBid.id);
+              }
+
+              resolve(bid);
+            }).catch((error: Error) => {
+              reject(error);
+            });
+        });
+      })
   },
   createFakeInstance: () : mongoose.Document => {
     const specialities = [];
@@ -104,6 +204,7 @@ RoomSchema.statics = {
       endTime: null,
       adults: faker.random.number(10),
       children: faker.random.number(10),
+      minimalBid: faker.random.number(100),
       specialities: specialities,
       hotel: {
         name: faker.company.companyName(),
@@ -130,5 +231,5 @@ RoomSchema.statics = {
   }
 };
 
-const Room = mongoose.model('Room', RoomSchema);
+const Room = connection.model('Room', RoomSchema);
 export {Room};

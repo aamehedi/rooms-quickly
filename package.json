@@ -9,6 +9,7 @@
   "author": "Abdullah All Mehedi",
   "license": "ISC",
   "dependencies": {
+    "@types/kue": "^0.11.1",
     "bench-rest": "^1.2.4",
     "body-parser": "^1.17.1",
     "config": "^1.26.1",
@@ -18,9 +19,11 @@
     "faker": "^4.1.0",
     "helmet": "^3.6.0",
     "i18n": "^0.8.3",
+    "kue": "0.11.6",
     "mocha": "^3.3.0",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.8",
+    "mongoose-error-handler": "1.0.0",
     "pm2": "^2.4.6",
     "sinon": "^2.2.0",
     "winston": "^2.3.1"
