@@ -205,7 +205,13 @@ RoomSchema.statics = {
         });
       })
   },
-  
+
+  isWinner: (id: String) : Promise<boolean> => {
+    return Room.count({"winnerBid._id": id}).then(num => {
+      return num > 0;
+    });
+  },
+
   createFakeInstance: () : mongoose.Document => {
     const specialities = [];
     const length = faker.random.number(10);

@@ -22,10 +22,5 @@ const BidSchema = new mongoose.Schema({
   }
 });
 
-/**
- * Statics
- */
-BidSchema.statics = {};
-
 const Bid = connection.model('Bid', BidSchema);
 export {Bid};
