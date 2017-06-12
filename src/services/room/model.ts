@@ -110,7 +110,6 @@ const RoomSchema = new mongoose.Schema({
           return !!data.$parent._doc.endTime;
         },
         message: "The Room is not opened yet for bidding.",
-
       },
       {
         validator: (data: any) => {
@@ -126,7 +125,8 @@ const RoomSchema = new mongoose.Schema({
       },
       {
         validator: (data: any) => {
-          return data._doc.amount >= data.$parent.oldWinnerBid._doc.amount * 1.05;
+          return !data.$parent.oldWinnerBid ||
+            data._doc.amount >= data.$parent.oldWinnerBid._doc.amount * 1.05;
         },
         message: "The bid amount is not greater than old one by 5%.",
       }
@@ -145,6 +145,18 @@ RoomSchema.post("init", (room: any) => {
   room.oldWinnerBid = room.winnerBid;
 });
 
+RoomSchema.pre("save", function (next: any) {
+  if (this.endTime) {
+    const endTime = new Date(this.endTime).getTime();
+    const currentTime = Date.now();
+    if (endTime - currentTime < 60000) {
+      this.endTime = new Date(endTime + 60000);
+    }
+  }
+
+  next();
+});
+
 /**
  * Statics mongoose
  */
@@ -156,6 +168,7 @@ RoomSchema.statics = {
       .limit(limit)
       .exec();
   },
+
   postBid: (roomId: string, partnerId: string, amount: number) => {
     return Room.findById(roomId)
       .then((room: any) => {
@@ -192,6 +205,7 @@ RoomSchema.statics = {
         });
       })
   },
+  
   createFakeInstance: () : mongoose.Document => {
     const specialities = [];
     const length = faker.random.number(10);

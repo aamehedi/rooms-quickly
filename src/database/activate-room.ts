@@ -11,9 +11,9 @@ if (!objectId) {
 
 import { Room } from'../services/room/model';
 
-let tomorrow = new Date();
-tomorrow.setDate(tomorrow.getDate() + 1)
-Room.findByIdAndUpdate(objectId, {$set: {endTime: tomorrow}}).exec()
+let endTime = new Date();
+endTime = new Date(endTime.getTime() + 10 * 60000);
+Room.findByIdAndUpdate(objectId, {$set: {endTime: endTime}}, {new: true}).exec()
   .then((room : mongoose.Document) => {
     logger.debug(JSON.stringify(room, null, '\t'));
     process.exit(0);
