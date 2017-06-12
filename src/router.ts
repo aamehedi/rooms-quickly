@@ -21,10 +21,10 @@ const router = (server : express.Express) => {
       .catch((err: Error) => {logger.error(JSON.stringify(err, null, '\t'))});
   });
 
-  server.post('/rooms/:roomId/bid', (req: express.Request, res: express.Response) => {
-    roomRequester.send({type: 'postBid', roomId: req.params.roomId, bid: req.body.bid})
+  server.post('/rooms/:id/bid', (req: express.Request, res: express.Response) => {
+    roomRequester.send({type: 'postBid', id: req.params.id, bid: req.body.bid})
       .then((bid: any) => {
-        Object.assign(bid, {roomId: req.params.roomId})
+        Object.assign(bid, {roomId: req.params.id})
         bidRequester.send({type: 'create', bid: bid})
           .catch((error: Error) => {
             logger.error(JSON.stringify(error, null, '\t'));
@@ -42,6 +42,19 @@ const router = (server : express.Express) => {
         }
       });
   });
+
+  server.get('/rooms/:id/bids', (req: express.Request, res: express.Response) => {
+    roomRequester.send({type: 'listBids', id: req.params.id, skip: req.params.skip, limit: req.params.limit})
+      .then((bids: Array<any>) => {
+        res.json({success: true, bids: bids});
+      }).catch((error: Error) => {
+        if (error.name === "RoomNotFound") {
+          res.status(404).json({ success: false, msg: "No room is found with the specified room id." });
+        } else {
+          res.status(503).json({ success: false, msg: "Some error have been occured in the server", error: error })
+        }
+      })
+  })
 
   server.get('/bids/:id', (req: express.Request, res: express.Response) => {
     bidRequester.send({type: 'show', id: req.params.id})

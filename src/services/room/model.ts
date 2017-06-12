@@ -169,8 +169,8 @@ RoomSchema.statics = {
       .exec();
   },
 
-  postBid: (roomId: string, partnerId: string, amount: number) => {
-    return Room.findById(roomId)
+  postBid: (id: string, partnerId: string, amount: number) => {
+    return Room.findById(id)
       .then((room: any) => {
         return new Promise((resolve: any, reject: any) => {
           if (!room) {
@@ -188,7 +188,7 @@ RoomSchema.statics = {
               return room.update({
                 $pull: {activeBids: {
                   _id: {$ne: bid._id},
-                  partnerId: mongoose.Types.ObjectId.createFromHexString(partnerId),
+                  partnerId: partnerId,
                 }}
               })
             })
@@ -202,6 +202,19 @@ RoomSchema.statics = {
             }).catch((error: Error) => {
               reject(error);
             });
+        });
+      })
+  },
+
+  listBids: (id: string, skip: number = 0, limit: number = 20): Promise<mongoose.Document[]> => {
+    return Room.findOne({_id: id}, {activeBids: {$slice: [skip, skip + limit]}})
+      .then((room: any) => {
+        return new Promise((resolve: any, reject: any) => {
+          if(!room) {
+            reject(new Error("RoomNotFound"));
+          }
+
+          resolve(room.activeBids);
         });
       })
   },
