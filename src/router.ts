@@ -24,7 +24,11 @@ const router = (server : express.Express) => {
   server.post('/rooms/:roomId/bid', (req: express.Request, res: express.Response) => {
     roomRequester.send({type: 'post_bid', roomId: req.params.roomId, bid: req.body.bid})
       .then((bid: any) => {
-        logger.debug(bid);
+        Object.assign(bid, {roomId: req.params.roomId})
+        bidRequester.send({type: 'create', bid: bid})
+          .catch((error: Error) => {
+            logger.error(JSON.stringify(error, null, '\t'));
+          })
         res.json({success: true, bid: bid});
       })
       .catch((error: any) => {
@@ -42,6 +46,11 @@ const router = (server : express.Express) => {
   const roomRequester = new cote.Requester({
     name: 'room requester',
     namespace: 'room'
+  });
+
+  const bidRequester = new cote.Requester({
+    name: 'bid requester',
+    namespace: 'bid'
   });
 };
 

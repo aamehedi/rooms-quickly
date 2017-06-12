@@ -4,7 +4,7 @@ import { Room } from './model';
 const roomResponder = new cote.Responder({
   name: "room responder",
   namespace: 'room',
-  respondsTo: ['list']
+  respondsTo: ['list', 'post_bid']
 });
 
 roomResponder.on('list', (req: any) => {
