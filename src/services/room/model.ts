@@ -5,13 +5,19 @@ import { notify } from '../../util/queue';
 
 (mongoose as any).Promise = global.Promise;
 
+const verifyRoom = (room: any, reject: any) => {
+  if (!room) {
+    reject(new Error('RoomNotFound'));
+  }
+};
+
 /**
  * Bid Schema
  */
 const BidSchema = new mongoose.Schema({
   partnerId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Partner",
+    ref: 'Partner',
     required: true
   },
   amount: {
@@ -104,33 +110,28 @@ const RoomSchema = new mongoose.Schema({
   winnerBid: {
     type: BidSchema,
     required: false,
-    validate: [
-      {
-        validator: (data: any) => {
-          return !!data.$parent._doc.endTime;
-        },
-        message: "The Room is not opened yet for bidding.",
+    validate: [{
+      validator: (data: any): boolean => {
+        return !!data.$parent._doc.endTime;
       },
-      {
-        validator: (data: any) => {
-          return new Date(data.$parent._doc.endTime) > new Date();
-        },
-        message: "The Room is closed now. Cannot take any more bids."
+      message: 'The Room is not opened yet for bidding.',
+    }, {
+      validator: (data: any): boolean => {
+        return new Date(data.$parent._doc.endTime) > new Date();
       },
-      {
-        validator: (data: any) => {
-          return data._doc.amount >= data.$parent._doc.minimalBid;
-        },
-        message: "The bid amount is not greater than or equal to minimal allowed bid."
+      message: 'The Room is closed now. Cannot take any more bids.'
+    }, {
+      validator: (data: any): boolean => {
+        return data._doc.amount >= data.$parent._doc.minimalBid;
       },
-      {
-        validator: (data: any) => {
-          return !data.$parent.oldWinnerBid ||
-            data._doc.amount >= data.$parent.oldWinnerBid._doc.amount * 1.05;
-        },
-        message: "The bid amount is not greater than old one by 5%.",
-      }
-    ]
+      message: 'The bid amount is not greater than or equal to the minimal allowed bid.'
+    }, {
+      validator: (data: any): boolean => {
+        return !data.$parent.oldWinnerBid ||
+          data._doc.amount >= data.$parent.oldWinnerBid._doc.amount * 1.05;
+      },
+      message: 'The bid amount is not greater than old one by 5%.',
+    }]
   },
   activeBids: {
     type: [BidSchema],
@@ -141,11 +142,11 @@ const RoomSchema = new mongoose.Schema({
 /**
  * Hooks
  */
-RoomSchema.post("init", (room: any) => {
+RoomSchema.post('init', (room: any) => {
   room.oldWinnerBid = room.winnerBid;
 });
 
-RoomSchema.pre("save", function (next: any) {
+RoomSchema.pre('save', function (next: any) {
   if (this.endTime) {
     const endTime = new Date(this.endTime).getTime();
     const currentTime = Date.now();
@@ -161,9 +162,9 @@ RoomSchema.pre("save", function (next: any) {
  * Statics mongoose
  */
 RoomSchema.statics = {
-  list: (skip: number = 0, limit: number = 20) : Promise<mongoose.Document[]> => {
-      return Room.find({endTime: {$gt: new Date()}})
-      .sort({endTime: -1})
+  list: (skip: number = 0, limit: number = 20): Promise<mongoose.Document[]> => {
+    return Room.find({ endTime: { $gt: new Date() } })
+      .sort({ endTime: -1 })
       .skip(skip)
       .limit(limit)
       .exec();
@@ -173,24 +174,26 @@ RoomSchema.statics = {
     return Room.findById(id)
       .then((room: any) => {
         return new Promise((resolve: any, reject: any) => {
-          if (!room) {
-            reject(new Error("RoomNotFound"));
-          }
+          verifyRoom(room, reject);
+
           resolve(room);
         });
-      }).then((room: any) => {
+      })
+      .then((room: any) => {
         return new Promise((resolve: any, reject: any) => {
-          const bid = new Bid({partnerId: partnerId, amount: amount});
+          const bid = new Bid({ partnerId: partnerId, amount: amount });
           room.winnerBid = bid;
           room.activeBids.unshift(bid);
           room.save()
-            .then((room: any) => {
-              return room.update({
-                $pull: {activeBids: {
-                  _id: {$ne: bid._id},
-                  partnerId: partnerId,
-                }}
-              })
+            .then((savedRoom: any) => {
+              return savedRoom.update({
+                $pull: {
+                  activeBids: {
+                    _id: { $ne: bid._id },
+                    partnerId: partnerId,
+                  }
+                }
+              });
             })
             .then(() => {
               // Notify the looser partner
@@ -199,33 +202,44 @@ RoomSchema.statics = {
               }
 
               resolve(bid);
-            }).catch((error: Error) => {
+            })
+            .catch((error: Error) => {
               reject(error);
             });
         });
-      })
+      });
   },
 
   listBids: (id: string, skip: number = 0, limit: number = 20): Promise<mongoose.Document[]> => {
-    return Room.findOne({_id: id}, {activeBids: {$slice: [skip, skip + limit]}})
+    return Room.findOne(
+      {
+        _id: id
+      },
+      {
+        activeBids:
+        {
+          $slice: [skip, skip + limit]
+        }
+      })
       .then((room: any) => {
         return new Promise((resolve: any, reject: any) => {
-          if(!room) {
-            reject(new Error("RoomNotFound"));
-          }
+          verifyRoom(room, reject);
 
           resolve(room.activeBids);
         });
-      })
+      });
   },
 
-  isWinner: (id: String) : Promise<boolean> => {
-    return Room.count({"winnerBid._id": id}).then(num => {
-      return num > 0;
-    });
+  isWinner: (id: String): Promise<boolean> => {
+    return Room.count({
+      'winnerBid._id': id
+    })
+      .then(num => {
+        return num > 0;
+      });
   },
 
-  createFakeInstance: () : mongoose.Document => {
+  createFakeInstance: (): mongoose.Document => {
     const specialities = [];
     const length = faker.random.number(10);
     for (var i = 0; i < length; i++) {
@@ -252,17 +266,19 @@ RoomSchema.statics = {
         email: faker.internet.email()
       }
     });
+
     return room;
   },
 
-  seed: (numberOfRooms : number = 10) : Promise<mongoose.Document[]> => {
+  seed: (numberOfRooms: number = 10): Promise<mongoose.Document[]> => {
     const rooms = [];
     for (let i = 0; i < numberOfRooms; i++) {
       rooms.push(RoomSchema.statics.createFakeInstance());
     }
+
     return Room.create(rooms);
   }
 };
 
 const Room = connection.model('Room', RoomSchema);
-export {Room};
+export { Room };

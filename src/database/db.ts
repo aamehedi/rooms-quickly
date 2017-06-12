@@ -4,26 +4,25 @@ import { logger } from '../util/logger';
 
 (mongoose as any).Promise = global.Promise;
 
-const database : string = config.get('database') as string;
+const database: string = config.get('database') as string;
 const connection = mongoose.createConnection(database);
 
 connection.on("connected", () => {
   logger.debug("MongoDB have been connected.");
 })
-
-connection.on("error", (error: Error) => {
-  logger.error(JSON.stringify(error, null, '\t'));
-})
-
-connection.on("disconnected", () => {
-  logger.debug("MongoDB have been disconnected.");
-})
+  .on("error", (error: Error) => {
+    logger.error(JSON.stringify(error, null, '\t'));
+  })
+  .on("disconnected", () => {
+    logger.debug("MongoDB have been disconnected.");
+  });
 
 process.on('SIGINT', () => {
-  mongoose.connection.close(() => {
-    logger.debug('Mongoose default connection disconnected through app termination.');
-    process.exit(0);
-  });
+  mongoose.connection
+    .close(() => {
+      logger.debug('Mongoose default connection disconnected through app termination.');
+      process.exit(0);
+    });
 });
 
-export {connection};
+export { connection };

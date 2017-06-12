@@ -1,11 +1,12 @@
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 
-const configuration = (path : string = '') => {
+const configuration = (path: string = '') => {
   path = path || `${__dirname}/../../../logs/`;
   const infoPath = `${path}info.log`;
   const errorPath = `${path}error.log`;
-  return  {
+  
+  return {
     transports: [
       new winston.transports.Console({
         level: 'debug',
@@ -49,4 +50,4 @@ const logger = new winston.Logger(configuration());
 
 const expressLogger = expressWinston.logger(configuration());
 
-export {logger, expressLogger, configuration};
+export { logger, expressLogger, configuration };

@@ -9,16 +9,24 @@ if (!objectId) {
   process.exit(0);
 }
 
-import { Room } from'../services/room/model';
+import { Room } from '../services/room/model';
 
 let endTime = new Date();
 endTime = new Date(endTime.getTime() + 10 * 60000);
-Room.findByIdAndUpdate(objectId, {$set: {endTime: endTime}}, {new: true}).exec()
-  .then((room : mongoose.Document) => {
+Room.findByIdAndUpdate(
+  objectId,
+  {
+    $set: { endTime: endTime }
+  },
+  {
+    new: true
+  })
+  .exec()
+  .then((room: mongoose.Document) => {
     logger.debug(JSON.stringify(room, null, '\t'));
     process.exit(0);
   })
-  .catch((err) => {
-    logger.error(err);
+  .catch((error) => {
+    logger.error(error);
     process.exit(0);
   });

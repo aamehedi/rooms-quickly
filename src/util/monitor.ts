@@ -1,5 +1,5 @@
 import * as cote from 'cote';
-import { logger } from './logger'
+import { logger } from './logger';
 
 const monitor = new cote.MonitoringTool();
 if (monitor) {
