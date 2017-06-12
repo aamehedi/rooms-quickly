@@ -30,33 +30,43 @@ const PartnerSchema = new mongoose.Schema({
  * Statics
  */
 PartnerSchema.statics = {
-  notify: (parntnerId: string, bidId: string) : Promise<any> => {
+  notify: (parntnerId: string, bidId: string): Promise<any> => {
     return Partner.findById(parntnerId)
       .then((partner: any) => {
         return new Promise((resolve: any, reject: any) => {
-          http.request(`${partner.httpEndpoint}?bidId=${bidId}`, function (response: any) {
-            resolve(response);
-          }).on("error", (error: Error) => {reject(error);}).end();
+          http.request(
+            `${partner.httpEndpoint}?bidId=${bidId}`,
+            function (response: any) {
+              resolve(response);
+            })
+            .on("error", (error: Error) => {
+              reject(error);
+            })
+            .end();
         });
       });
   },
-  createFakeInstance: () : mongoose.Document => {
+
+  createFakeInstance: (): mongoose.Document => {
     const partner = new Partner({
       name: faker.name.firstName(),
       token: faker.random.alphaNumeric(32),
       email: faker.internet.email(),
       httpEndpoint: faker.internet.url()
     });
+
     return partner;
   },
-  seed: (numberOfPartners : number = 10) : Promise<mongoose.Document[]> => {
+
+  seed: (numberOfPartners: number = 10): Promise<mongoose.Document[]> => {
     const partners = [];
     for (let i = 0; i < numberOfPartners; i++) {
       partners.push(PartnerSchema.statics.createFakeInstance());
     }
+
     return Partner.create(partners);
   }
 };
 
 const Partner = connection.model('Partner', PartnerSchema);
-export {Partner};
+export { Partner };

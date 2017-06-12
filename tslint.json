@@ -8,7 +8,7 @@
 		"no-unused-variable": true,
 		"curly": true,
 		"class-name": true,
-		"semicolon": ["always"],
+		"semicolon": [true, "always"],
 		"triple-equals": true,
     "comma-dangle"            : 2,                 // disallow or enforce trailing commas
     "no-cond-assign"          : 2,                 // disallow assignment in conditional expressions
