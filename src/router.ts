@@ -22,7 +22,7 @@ const router = (server : express.Express) => {
   });
 
   server.post('/rooms/:roomId/bid', (req: express.Request, res: express.Response) => {
-    roomRequester.send({type: 'post_bid', roomId: req.params.roomId, bid: req.body.bid})
+    roomRequester.send({type: 'postBid', roomId: req.params.roomId, bid: req.body.bid})
       .then((bid: any) => {
         Object.assign(bid, {roomId: req.params.roomId})
         bidRequester.send({type: 'create', bid: bid})
@@ -34,12 +34,29 @@ const router = (server : express.Express) => {
       .catch((error: any) => {
         logger.error(error);
         if (error.name === "RoomNotFound") {
-          res.status(404).json({ success: false, msg: "No room is found with the specified room id."});
+          res.status(404).json({success: false, msg: "No room is found with the specified room id."});
         } else if (error.name === "ValidationError") {
           res.status(400).json({success: false, msg: mongooseErrorHandler.set(error)});
         } else {
-          res.status(500).json({ success: false, msg: mongooseErrorHandler.set(error)});
+          res.status(500).json({success: false, msg: mongooseErrorHandler.set(error)});
         }
+      });
+  });
+
+  server.get('/bids/:id', (req: express.Request, res: express.Response) => {
+    bidRequester.send({type: 'show', id: req.params.id})
+      .then((bid: any) => {
+        roomRequester.send({type: 'checkWinner', id: bid._id})
+          .then((isWinner: boolean) => {
+            Object.assign(bid, {winner: isWinner});
+            res.send({success: true, bid: bid});
+          }).catch((error: Error) => {
+            logger.error(JSON.stringify(error, null, '\t'));
+            res.status(503).json({success: false, error: error});
+          });
+      }).catch((error: Error) => {
+        logger.error(JSON.stringify(error, null, '\t'));
+        res.status(404).json({success: false, msg: "No bid have been found with the specified id."});
       });
   });
 
