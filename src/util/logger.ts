@@ -1,11 +1,16 @@
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 
+/**
+ * This function is responsible for returning a configuration object for winston
+ * logger. It takes a path parameter (optional), which it uses to identify the
+ * log directory for file transports of winston logger.
+ */
 const configuration = (path: string = '') => {
   path = path || `${__dirname}/../../../logs/`;
   const infoPath = `${path}info.log`;
   const errorPath = `${path}error.log`;
-  
+
   return {
     transports: [
       new winston.transports.Console({

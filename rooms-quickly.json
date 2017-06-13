@@ -2,23 +2,23 @@
     "apps": [
         {
             "name"      : "server",
-            "script"    : "dist/src/server.js",
-            "watch"     : "dist/src/server.js"
+            "script"    : "dist/server.js",
+            "watch"     : "dist/server.js"
         },
         {
             "name"      : "monitor",
-            "script"    : "dist/src/util/monitor.js",
-            "watch"     : "dist/src/util/monitor.js"
+            "script"    : "dist/util/monitor.js",
+            "watch"     : "dist/util/monitor.js"
         },
         {
             "name"      : "room-service",
-            "script"    : "dist/src/services/room/service.js",
-            "watch"     : "dist/src/services/room/service.js"
+            "script"    : "dist/services/room/service.js",
+            "watch"     : "dist/services/room/service.js"
         },
         {
             "name"      : "bid-service",
-            "script"    : "dist/src/services/bid/service.js",
-            "watch"     : "dist/src/services/bid/service.js"
+            "script"    : "dist/services/bid/service.js",
+            "watch"     : "dist/services/bid/service.js"
         }
     ]
 }

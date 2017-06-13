@@ -23,6 +23,7 @@ Room.remove({})
   })
   .then(() => {
     logger.debug("Existing partners have been removed from the database.");
+
     return Partner.schema
       .statics
       .seed(config.get('seed.number_of_partners'));
@@ -34,7 +35,7 @@ Room.remove({})
     });
     process.exit(0);
   })
-  .catch((error) => {
+  .catch((error: any) => {
     logger.error(error);
     process.exit(0);
   });

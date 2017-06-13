@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import { connection } from '../../database/db';
 
 (mongoose as any).Promise = global.Promise;
+
 /**
  * Bid Schema
  */
