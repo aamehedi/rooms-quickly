@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;util/monitor&quot; | rooms-quickly</title>
+	<title>&quot;util/queue&quot; | rooms-quickly</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_util_monitor_.html">&quot;util/monitor&quot;</a>
+					<a href="_util_queue_.html">&quot;util/queue&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;util/monitor&quot;</h1>
+			<h1>External module &quot;util/queue&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,14 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_util_monitor_.html#monitor" class="tsd-kind-icon">monitor</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_util_queue_.html#queue" class="tsd-kind-icon">queue</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_util_queue_.html#logqueue" class="tsd-kind-icon">log<wbr>Queue</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_util_queue_.html#notify" class="tsd-kind-icon">notify</a></li>
 							</ul>
 						</section>
 					</div>
@@ -82,14 +89,79 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="monitor" class="tsd-anchor"></a>
-					<h3>monitor</h3>
-					<div class="tsd-signature tsd-kind-icon">monitor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;new cote.MonitoringTool()</span></div>
+					<a name="queue" class="tsd-anchor"></a>
+					<h3>queue</h3>
+					<div class="tsd-signature tsd-kind-icon">queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Queue</span><span class="tsd-signature-symbol"> =&nbsp;kue.createQueue({jobEvents: false,redis: config.get(&#x27;redisURL&#x27;)})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/util/monitor.ts#L4">util/monitor.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/util/queue.ts#L57">util/queue.ts:57</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="logqueue" class="tsd-anchor"></a>
+					<h3>log<wbr>Queue</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Queue<span class="tsd-signature-symbol">(</span>queue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Queue</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/util/queue.ts#L11">util/queue.ts:11</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This function is responsible for logging different events (currently
+										&quot;ready&quot;, &quot;error&quot;, &quot;job enqueue&quot;, &quot;job start&quot;, &quot;job failed attempt&quot; and
+									&quot;job failed&quot;) of the kue.Queue instance.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>queue: <span class="tsd-signature-type">Queue</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="notify" class="tsd-anchor"></a>
+					<h3>notify</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">notify<span class="tsd-signature-symbol">(</span>partnerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span>, bidId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/util/queue.ts#L38">util/queue.ts:38</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This function is responsible for creating a background job in Queue instance
+									so that it later sends notifaction to partners regarding their lost bids.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>partnerId: <span class="tsd-signature-type">String</span></h5>
+								</li>
+								<li>
+									<h5>bidId: <span class="tsd-signature-type">String</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -100,7 +172,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_database_activate_room_.html">"database/activate-<wbr>room"</a>
+						<a href="_database_activateroom_.html">"database/activate<wbr>Room"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_database_db_.html">"database/db"</a>
@@ -130,20 +202,32 @@
 						<a href="_services_room_service_.html">"services/room/service"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_util_logger_.html">"util/logger"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="_util_monitor_.html">"util/monitor"</a>
+						<a href="_util_activateroomutil_.html">"util/activate<wbr>Room<wbr>Util"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="_util_logger_.html">"util/logger"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_monitor_.html">"util/monitor"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
 						<a href="_util_queue_.html">"util/queue"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_seedutil_.html">"util/seed<wbr>Util"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_util_monitor_.html#monitor" class="tsd-kind-icon">monitor</a>
+						<a href="_util_queue_.html#queue" class="tsd-kind-icon">queue</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_util_queue_.html#logqueue" class="tsd-kind-icon">log<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_util_queue_.html#notify" class="tsd-kind-icon">notify</a>
 					</li>
 				</ul>
 			</nav>

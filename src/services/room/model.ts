@@ -211,14 +211,12 @@ RoomSchema.pre('save', extendTimeOnLastMinuteBid);
  */
 
 /**
- * This function is responsible for returing a list of active auction rooms with
- * pagination support.
+ * This function is responsible for returing a list of active auction rooms.
  */
-const list = (skip: number = 0, limit: number = 20): Promise<mongoose.Document[]> => {
+const list = (): Promise<mongoose.Document[]> => {
   return Room.find({ endTime: { $gt: new Date() } })
     .sort({ endTime: -1 })
-    .skip(skip)
-    .limit(limit)
+    .lean(true)
     .exec();
 };
 

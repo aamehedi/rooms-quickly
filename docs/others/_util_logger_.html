@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;database/activate-room&quot; | rooms-quickly</title>
+	<title>&quot;util/logger&quot; | rooms-quickly</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_database_activate_room_.html">&quot;database/activate-room&quot;</a>
+					<a href="_util_logger_.html">&quot;util/logger&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;database/activate-room&quot;</h1>
+			<h1>External module &quot;util/logger&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,14 +73,14 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_database_activate_room_.html#argv" class="tsd-kind-icon">argv</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_database_activate_room_.html#objectid" class="tsd-kind-icon">object<wbr>Id</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_util_logger_.html#expresslogger" class="tsd-kind-icon">express<wbr>Logger</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_util_logger_.html#logger" class="tsd-kind-icon">logger</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_database_activate_room_.html#activateroom" class="tsd-kind-icon">activate<wbr>Room</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_util_logger_.html#configuration" class="tsd-kind-icon">configuration</a></li>
 							</ul>
 						</section>
 					</div>
@@ -89,22 +89,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="argv" class="tsd-anchor"></a>
-					<h3>argv</h3>
-					<div class="tsd-signature tsd-kind-icon">argv<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;process.argv.slice(2)</span></div>
+					<a name="expresslogger" class="tsd-anchor"></a>
+					<h3>express<wbr>Logger</h3>
+					<div class="tsd-signature tsd-kind-icon">express<wbr>Logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;expressWinston.logger(configuration())</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/database/activate-room.ts#L4">database/activate-room.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/util/logger.ts#L56">util/logger.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="objectid" class="tsd-anchor"></a>
-					<h3>object<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">object<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;argv[0]</span></div>
+					<a name="logger" class="tsd-anchor"></a>
+					<h3>logger</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">LoggerInstance</span><span class="tsd-signature-symbol"> =&nbsp;new winston.Logger(configuration())</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/database/activate-room.ts#L5">database/activate-room.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/util/logger.ts#L54">util/logger.ts:54</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -112,31 +112,40 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="activateroom" class="tsd-anchor"></a>
-					<h3>activate<wbr>Room</h3>
+					<a name="configuration" class="tsd-anchor"></a>
+					<h3>configuration</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">activate<wbr>Room<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">configuration<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/database/activate-room.ts#L18">database/activate-room.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/util/logger.ts#L9">util/logger.ts:9</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>This function is responsible for activiating a room for action. It will
-									activate the room for 10 minutes, starting from currnt time.</p>
+									<p>This function is responsible for returning a configuration object for winston
+										logger. It takes a path parameter (optional), which it uses to identify the
+									log directory for file transports of winston logger.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>id: <span class="tsd-signature-type">string</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> path: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>exit<wbr>OnError<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>transports<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">ConsoleTransportInstance</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FileTransportInstance</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -148,8 +157,8 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="_database_activate_room_.html">"database/activate-<wbr>room"</a>
+					<li class=" tsd-kind-external-module">
+						<a href="_database_activateroom_.html">"database/activate<wbr>Room"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_database_db_.html">"database/db"</a>
@@ -179,6 +188,9 @@
 						<a href="_services_room_service_.html">"services/room/service"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="_util_activateroomutil_.html">"util/activate<wbr>Room<wbr>Util"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
 						<a href="_util_logger_.html">"util/logger"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -187,18 +199,21 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_util_queue_.html">"util/queue"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_seedutil_.html">"util/seed<wbr>Util"</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_database_activate_room_.html#argv" class="tsd-kind-icon">argv</a>
+						<a href="_util_logger_.html#expresslogger" class="tsd-kind-icon">express<wbr>Logger</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_database_activate_room_.html#objectid" class="tsd-kind-icon">object<wbr>Id</a>
+						<a href="_util_logger_.html#logger" class="tsd-kind-icon">logger</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_database_activate_room_.html#activateroom" class="tsd-kind-icon">activate<wbr>Room</a>
+						<a href="_util_logger_.html#configuration" class="tsd-kind-icon">configuration</a>
 					</li>
 				</ul>
 			</nav>

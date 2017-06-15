@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;database/db&quot; | rooms-quickly</title>
+	<title>&quot;server&quot; | rooms-quickly</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_database_db_.html">&quot;database/db&quot;</a>
+					<a href="_server_.html">&quot;server&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;database/db&quot;</h1>
+			<h1>External module &quot;server&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,15 +73,8 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_database_db_.html#connection" class="tsd-kind-icon">connection</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_database_db_.html#database" class="tsd-kind-icon">database</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Functions</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_database_db_.html#logconnection" class="tsd-kind-icon">log<wbr>Connection</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_database_db_.html#safeclose" class="tsd-kind-icon">safe<wbr>Close</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_server_.html#port" class="tsd-kind-icon">port</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_server_.html#server" class="tsd-kind-icon">server</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,88 +83,24 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="connection" class="tsd-anchor"></a>
-					<h3>connection</h3>
-					<div class="tsd-signature tsd-kind-icon">connection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Connection</span><span class="tsd-signature-symbol"> =&nbsp;mongoose.createConnection(database)</span></div>
+					<a name="port" class="tsd-anchor"></a>
+					<h3>port</h3>
+					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> =&nbsp;config.get(&#x27;port&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/database/db.ts#L37">database/db.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/server.ts#L9">server.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="database" class="tsd-anchor"></a>
-					<h3>database</h3>
-					<div class="tsd-signature tsd-kind-icon">database<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;config.get(&#x27;database&#x27;) as string</span></div>
+					<a name="server" class="tsd-anchor"></a>
+					<h3>server</h3>
+					<div class="tsd-signature tsd-kind-icon">server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Express</span><span class="tsd-signature-symbol"> =&nbsp;express()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/database/db.ts#L36">database/db.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/server.ts#L8">server.ts:8</a></li>
 						</ul>
 					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="logconnection" class="tsd-anchor"></a>
-					<h3>log<wbr>Connection</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">log<wbr>Connection<span class="tsd-signature-symbol">(</span>con<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Connection</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/database/db.ts#L11">database/db.ts:11</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>This function is responsible for logging different events (currently
-									&quot;connected&quot;, &quot;error&quot;, and &quot;disconnected&quot;) of the mongoose Connection instance.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>con: <span class="tsd-signature-type">Connection</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="safeclose" class="tsd-anchor"></a>
-					<h3>safe<wbr>Close</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">safe<wbr>Close<span class="tsd-signature-symbol">(</span>con<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Connection</span>, proc<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Process</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/database/db.ts#L27">database/db.ts:27</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>This function is responsible for ensuring the mongose Connection instance is
-									closed while the process is terminated.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>con: <span class="tsd-signature-type">Connection</span></h5>
-								</li>
-								<li>
-									<h5>proc: <span class="tsd-signature-type">Process</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 		</div>
@@ -182,9 +111,9 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_database_activate_room_.html">"database/activate-<wbr>room"</a>
+						<a href="_database_activateroom_.html">"database/activate<wbr>Room"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_database_db_.html">"database/db"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -193,7 +122,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_router_.html">"router"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_server_.html">"server"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -212,6 +141,9 @@
 						<a href="_services_room_service_.html">"services/room/service"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="_util_activateroomutil_.html">"util/activate<wbr>Room<wbr>Util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="_util_logger_.html">"util/logger"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -220,21 +152,18 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_util_queue_.html">"util/queue"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_seedutil_.html">"util/seed<wbr>Util"</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_database_db_.html#connection" class="tsd-kind-icon">connection</a>
+						<a href="_server_.html#port" class="tsd-kind-icon">port</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_database_db_.html#database" class="tsd-kind-icon">database</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_database_db_.html#logconnection" class="tsd-kind-icon">log<wbr>Connection</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_database_db_.html#safeclose" class="tsd-kind-icon">safe<wbr>Close</a>
+						<a href="_server_.html#server" class="tsd-kind-icon">server</a>
 					</li>
 				</ul>
 			</nav>

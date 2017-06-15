@@ -115,7 +115,7 @@ const router = (server: e.Express) => {
       limit: req.query.limit
     })
       .then((rooms: any) => {
-        res.send(rooms);
+        return res.send(rooms);
       })
       .catch((error: Error) => {
         logger.error(JSON.stringify(error, null, '\t'));
@@ -189,7 +189,7 @@ const router = (server: e.Express) => {
             logger.error(JSON.stringify(error, null, '\t'));
           });
 
-        res.json({
+        return res.json({
           success: true,
           bid: bid
         });
@@ -197,7 +197,7 @@ const router = (server: e.Express) => {
       .catch((error: any) => {
         logger.error(error);
         if (error.name === 'RoomNotFound') {
-          res.status(404)
+          return res.status(404)
             .json({
               success: false,
               msg: {
@@ -207,13 +207,13 @@ const router = (server: e.Express) => {
               }
             });
         } else if (error.name === 'ValidationError') {
-          res.status(400)
+          return res.status(400)
             .json({
               success: false,
               msg: mongooseErrorHandler.set(error)
             });
         } else {
-          res.status(500)
+          return res.status(500)
             .json({
               success: false,
               msg: mongooseErrorHandler.set(error)
@@ -275,25 +275,25 @@ const router = (server: e.Express) => {
       limit: req.params.limit
     })
       .then((bids: Array<any>) => {
-        res.json({
+        return res.json({
           success: true,
           bids: bids
         });
       })
       .catch((error: Error) => {
         if (error.name === 'RoomNotFound') {
-          res.status(404)
+          return res.status(404)
             .json({
               success: false,
               msg: 'No room is found with the specified room id.'
             });
         } else {
-          res.status(503)
+          logger.error(JSON.stringify(error, null, '\t'));
+          return res.status(503)
             .json({
               success: false,
               msg: 'Some error have been occured in the server'
             });
-          logger.error(JSON.stringify(error, null, '\t'));
         }
       });
   });
@@ -353,14 +353,14 @@ const router = (server: e.Express) => {
         })
           .then((isWinner: boolean) => {
             Object.assign(bid, { winner: isWinner });
-            res.send({
+            return res.send({
               success: true,
               bid: bid
             });
           })
           .catch((error: Error) => {
             logger.error(JSON.stringify(error, null, '\t'));
-            res.status(503)
+            return res.status(503)
               .json({
                 success: false,
                 error: error
@@ -368,7 +368,7 @@ const router = (server: e.Express) => {
           });
       }).catch((error: Error) => {
         logger.error(JSON.stringify(error, null, '\t'));
-        res.status(404)
+        return res.status(404)
           .json({
             success: false,
             msg: 'No bid have been found with the specified id.'
