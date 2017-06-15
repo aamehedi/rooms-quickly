@@ -1,41 +1,25 @@
-import { Room } from '../services/room/model';
-import { Partner } from '../services/partner/model';
+import { seed } from '../util/seedUtil';
 import * as mongoose from 'mongoose';
 import * as config from 'config';
 import { logger } from '../util/logger';
 
-Room.remove({})
-  .exec()
+const numberOfRooms = config.get('seed.number_of_rooms') as number;
+const numberOfPartners = config.get('seed.number_of_partners') as number;
+/**
+ * This function is responsible for logging an array of mongose document at log
+ * level 'info'.
+ */
+const log = (docs: mongoose.Document[], modelName: string) => {
+  logger.debug(`${modelName}s have been created in the database.`);
+  docs.forEach(doc => {
+    logger.info(JSON.stringify(doc, null, '\t'));
+  });
+};
+
+seed(numberOfRooms, numberOfPartners, log)
   .then(() => {
-    logger.debug("Existing rooms have been removed from the database.");
-
-    return Room.schema
-      .statics
-      .seed(config.get('seed.number_of_rooms'));
-  })
-  .then((rooms: mongoose.Model<mongoose.Document>[]) => {
-    logger.debug("Rooms have been created in the database.");
-    rooms.forEach(room => {
-      logger.info(JSON.stringify(room, null, '\t'));
-    });
-
-    return Partner.remove({}).exec();
-  })
-  .then(() => {
-    logger.debug("Existing partners have been removed from the database.");
-
-    return Partner.schema
-      .statics
-      .seed(config.get('seed.number_of_partners'));
-  })
-  .then((partners: mongoose.Model<mongoose.Document>[]) => {
-    logger.debug("Partners have been created in the database.");
-    partners.forEach(partner => {
-      logger.info(JSON.stringify(partner, null, '\t'));
-    });
     process.exit(0);
-  })
-  .catch((error: any) => {
+  }).catch((error: any) => {
     logger.error(error);
     process.exit(0);
   });

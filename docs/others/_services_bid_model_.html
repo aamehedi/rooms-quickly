@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;database/seed&quot; | rooms-quickly</title>
+	<title>&quot;services/bid/model&quot; | rooms-quickly</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,16 +56,58 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_database_seed_.html">&quot;database/seed&quot;</a>
+					<a href="_services_bid_model_.html">&quot;services/bid/model&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;database/seed&quot;</h1>
+			<h1>External module &quot;services/bid/model&quot;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_services_bid_model_.html#bid" class="tsd-kind-icon">Bid</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_services_bid_model_.html#bidschema" class="tsd-kind-icon">Bid<wbr>Schema</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="bid" class="tsd-anchor"></a>
+					<h3>Bid</h3>
+					<div class="tsd-signature tsd-kind-icon">Bid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Model</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;connection.model(&#x27;Bid&#x27;, BidSchema)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/bid/model.ts#L26">services/bid/model.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="bidschema" class="tsd-anchor"></a>
+					<h3>Bid<wbr>Schema</h3>
+					<div class="tsd-signature tsd-kind-icon">Bid<wbr>Schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Schema</span><span class="tsd-signature-symbol"> =&nbsp;new mongoose.Schema({partnerId: {type: mongoose.Schema.Types.ObjectId,ref: &quot;Partner&quot;,required: true},roomId: {type: mongoose.Schema.Types.ObjectId,ref: &quot;Room&quot;,required: true},amount: {type: Number,required: true}})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/bid/model.ts#L9">services/bid/model.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Bid Schema</p>
+						</div>
+					</div>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
@@ -74,12 +116,12 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_database_activate_room_.html">"database/activate-<wbr>room"</a>
+						<a href="_database_activateroom_.html">"database/activate<wbr>Room"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_database_db_.html">"database/db"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_database_seed_.html">"database/seed"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -88,7 +130,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_server_.html">"server"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_services_bid_model_.html">"services/bid/model"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -104,6 +146,9 @@
 						<a href="_services_room_service_.html">"services/room/service"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="_util_activateroomutil_.html">"util/activate<wbr>Room<wbr>Util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="_util_logger_.html">"util/logger"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -112,10 +157,19 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_util_queue_.html">"util/queue"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_seedutil_.html">"util/seed<wbr>Util"</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_services_bid_model_.html#bid" class="tsd-kind-icon">Bid</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_services_bid_model_.html#bidschema" class="tsd-kind-icon">Bid<wbr>Schema</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

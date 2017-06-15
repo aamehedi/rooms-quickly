@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;server&quot; | rooms-quickly</title>
+	<title>&quot;router&quot; | rooms-quickly</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_server_.html">&quot;server&quot;</a>
+					<a href="_router_.html">&quot;router&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;server&quot;</h1>
+			<h1>External module &quot;router&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,36 +71,38 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
+							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_server_.html#port" class="tsd-kind-icon">port</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_server_.html#server" class="tsd-kind-icon">server</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_router_.html#router" class="tsd-kind-icon">router</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="port" class="tsd-anchor"></a>
-					<h3>port</h3>
-					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> =&nbsp;config.get(&#x27;port&#x27;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/server.ts#L8">server.ts:8</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="server" class="tsd-anchor"></a>
-					<h3>server</h3>
-					<div class="tsd-signature tsd-kind-icon">server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Express</span><span class="tsd-signature-symbol"> =&nbsp;express()</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/server.ts#L7">server.ts:7</a></li>
-						</ul>
-					</aside>
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="router" class="tsd-anchor"></a>
+					<h3>router</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">router<span class="tsd-signature-symbol">(</span>server<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Express</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/router.ts#L6">router.ts:6</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>server: <span class="tsd-signature-type">Express</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -111,7 +113,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_database_activate_room_.html">"database/activate-<wbr>room"</a>
+						<a href="_database_activateroom_.html">"database/activate<wbr>Room"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_database_db_.html">"database/db"</a>
@@ -119,10 +121,10 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_database_seed_.html">"database/seed"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_router_.html">"router"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_server_.html">"server"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -141,6 +143,9 @@
 						<a href="_services_room_service_.html">"services/room/service"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="_util_activateroomutil_.html">"util/activate<wbr>Room<wbr>Util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="_util_logger_.html">"util/logger"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -149,15 +154,15 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_util_queue_.html">"util/queue"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_seedutil_.html">"util/seed<wbr>Util"</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_server_.html#port" class="tsd-kind-icon">port</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_server_.html#server" class="tsd-kind-icon">server</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_router_.html#router" class="tsd-kind-icon">router</a>
 					</li>
 				</ul>
 			</nav>

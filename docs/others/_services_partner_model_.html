@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;router&quot; | rooms-quickly</title>
+	<title>&quot;services/partner/model&quot; | rooms-quickly</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_router_.html">&quot;router&quot;</a>
+					<a href="_services_partner_model_.html">&quot;services/partner/model&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;router&quot;</h1>
+			<h1>External module &quot;services/partner/model&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,36 +71,133 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_services_partner_model_.html#partner" class="tsd-kind-icon">Partner</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_services_partner_model_.html#partnerschema" class="tsd-kind-icon">Partner<wbr>Schema</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_router_.html#router" class="tsd-kind-icon">router</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_services_partner_model_.html#createfakeinstance" class="tsd-kind-icon">create<wbr>Fake<wbr>Instance</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_services_partner_model_.html#notify" class="tsd-kind-icon">notify</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_services_partner_model_.html#seed" class="tsd-kind-icon">seed</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="partner" class="tsd-anchor"></a>
+					<h3>Partner</h3>
+					<div class="tsd-signature tsd-kind-icon">Partner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Model</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;connection.model(&#x27;Partner&#x27;, PartnerSchema)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/partner/model.ts#L86">services/partner/model.ts:86</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="partnerschema" class="tsd-anchor"></a>
+					<h3>Partner<wbr>Schema</h3>
+					<div class="tsd-signature tsd-kind-icon">Partner<wbr>Schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Schema</span><span class="tsd-signature-symbol"> =&nbsp;new mongoose.Schema({name: {type: String,required: true},token: {type: String,required: true},email: {type: String,required: true},httpEndpoint: {type: String,required: true}})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/partner/model.ts#L11">services/partner/model.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Partner Schema</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="router" class="tsd-anchor"></a>
-					<h3>router</h3>
+					<a name="createfakeinstance" class="tsd-anchor"></a>
+					<h3>create<wbr>Fake<wbr>Instance</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">router<span class="tsd-signature-symbol">(</span>server<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Express</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Fake<wbr>Instance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Document</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/router.ts#L6">router.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/partner/model.ts#L59">services/partner/model.ts:59</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This function is responsible for creating a fake instance (Using Faker
+									package) of the Partner model.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Document</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="notify" class="tsd-anchor"></a>
+					<h3>notify</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">notify<span class="tsd-signature-symbol">(</span>parntnerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, bidId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/partner/model.ts#L38">services/partner/model.ts:38</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This function is responsible for sending notifcation to partners while there
+									bid is no longer a winner via http request to their API.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>server: <span class="tsd-signature-type">Express</span></h5>
+									<h5>parntnerId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>bidId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="seed" class="tsd-anchor"></a>
+					<h3>seed</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">seed<span class="tsd-signature-symbol">(</span>numberOfPartners<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/partner/model.ts#L73">services/partner/model.ts:73</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This function is responsible for seeding the database with some fake partners.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> numberOfPartners: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;10</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -113,7 +210,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_database_activate_room_.html">"database/activate-<wbr>room"</a>
+						<a href="_database_activateroom_.html">"database/activate<wbr>Room"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_database_db_.html">"database/db"</a>
@@ -121,7 +218,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_database_seed_.html">"database/seed"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_router_.html">"router"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -133,7 +230,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_services_bid_service_.html">"services/bid/service"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_services_partner_model_.html">"services/partner/model"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -141,6 +238,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_services_room_service_.html">"services/room/service"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_activateroomutil_.html">"util/activate<wbr>Room<wbr>Util"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_util_logger_.html">"util/logger"</a>
@@ -151,12 +251,27 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_util_queue_.html">"util/queue"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_seedutil_.html">"util/seed<wbr>Util"</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_services_partner_model_.html#partner" class="tsd-kind-icon">Partner</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_services_partner_model_.html#partnerschema" class="tsd-kind-icon">Partner<wbr>Schema</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_router_.html#router" class="tsd-kind-icon">router</a>
+						<a href="_services_partner_model_.html#createfakeinstance" class="tsd-kind-icon">create<wbr>Fake<wbr>Instance</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_services_partner_model_.html#notify" class="tsd-kind-icon">notify</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_services_partner_model_.html#seed" class="tsd-kind-icon">seed</a>
 					</li>
 				</ul>
 			</nav>

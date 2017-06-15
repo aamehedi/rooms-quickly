@@ -109,7 +109,7 @@
 					<div class="tsd-signature tsd-kind-icon">Bid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Model</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;mongoose.model(&#x27;Bid&#x27;, BidSchema)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L30">services/room/model.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L30">services/room/model.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -119,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">Bid<wbr>Schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Schema</span><span class="tsd-signature-symbol"> =&nbsp;new mongoose.Schema({partnerId: {type: mongoose.Schema.Types.ObjectId,ref: &#x27;Partner&#x27;,required: true},amount: {type: Number,required: true,validate: []}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L17">services/room/model.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L17">services/room/model.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -134,7 +134,7 @@
 					<div class="tsd-signature tsd-kind-icon">Hotel<wbr>Schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Schema</span><span class="tsd-signature-symbol"> =&nbsp;new mongoose.Schema({name: {type: String,required: true},address: {streetAddress: {type: String,required: true},zipCode: {type: String,required: true},city: {type: String,required: false},state: {type: String,required: false},country: {type: String,required: true}},phone: {type: String,required: true},email: {type: String},fax: {type: String},website: {type: String}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L35">services/room/model.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L35">services/room/model.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -149,7 +149,7 @@
 					<div class="tsd-signature tsd-kind-icon">Room<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Model</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;connection.model(&#x27;Room&#x27;, RoomSchema)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L364">services/room/model.ts:364</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L362">services/room/model.ts:362</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -159,7 +159,7 @@
 					<div class="tsd-signature tsd-kind-icon">Room<wbr>Schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Schema</span><span class="tsd-signature-symbol"> =&nbsp;new mongoose.Schema({name: {type: String,required: true},description: {type: String},endTime: {type: Date},adults: {type: Number,required: true,default: 1},children: {type: Number,required: true,default: 0},minimalBid: {type: Number,required: true},specialities: [String],hotel: {type: HotelSchema,required: true},winnerBid: {type: BidSchema,required: false,validate: [{validator: roomIsOpened,message: &#x27;The Room is not opened yet for bidding.&#x27;,},{validator: roomIsActive,message: &#x27;Bidding for this room is expired now. Cannot take any more bids.&#x27;,},{validator: bidIsGreaterThanMinimumBid,message: &#x27;The bid amount is not greater than or equal to the minimal allowed bid.&#x27;,},{validator: bidIsGreaterThanPrevBid,message: &#x27;The bid amount is not greater than old one by 5%.&#x27;,}]},activeBids: {type: [BidSchema],required: false}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L117">services/room/model.ts:117</a></li>
+							<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L117">services/room/model.ts:117</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -181,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L101">services/room/model.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L101">services/room/model.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -210,7 +210,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L109">services/room/model.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L109">services/room/model.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -239,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L314">services/room/model.ts:314</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L312">services/room/model.ts:312</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -262,7 +262,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L194">services/room/model.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L194">services/room/model.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -292,7 +292,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L301">services/room/model.ts:301</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L299">services/room/model.ts:299</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -315,30 +315,20 @@
 					<a name="list" class="tsd-anchor"></a>
 					<h3>list</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span>skip<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, limit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">list<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L217">services/room/model.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L216">services/room/model.ts:216</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>This function is responsible for returing a list of active auction rooms with
-									pagination support.</p>
+									<p>This function is responsible for returing a list of active auction rooms.</p>
 								</div>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> skip: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> limit: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;20</span></h5>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Document</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -353,7 +343,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L274">services/room/model.ts:274</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L272">services/room/model.ts:272</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -389,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L229">services/room/model.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L227">services/room/model.ts:227</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -424,7 +414,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L93">services/room/model.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L93">services/room/model.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -453,7 +443,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L85">services/room/model.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L85">services/room/model.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -482,7 +472,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L348">services/room/model.ts:348</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L346">services/room/model.ts:346</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -510,7 +500,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L185">services/room/model.ts:185</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L185">services/room/model.ts:185</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -540,7 +530,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/c39844a/src/services/room/model.ts#L8">services/room/model.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/abdullahallmehedi/rooms-quickly/blob/dc5e833/src/services/room/model.ts#L8">services/room/model.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -565,7 +555,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_database_activate_room_.html">"database/activate-<wbr>room"</a>
+						<a href="_database_activateroom_.html">"database/activate<wbr>Room"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_database_db_.html">"database/db"</a>
@@ -595,6 +585,9 @@
 						<a href="_services_room_service_.html">"services/room/service"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="_util_activateroomutil_.html">"util/activate<wbr>Room<wbr>Util"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="_util_logger_.html">"util/logger"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -602,6 +595,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_util_queue_.html">"util/queue"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_util_seedutil_.html">"util/seed<wbr>Util"</a>
 					</li>
 				</ul>
 			</nav>
